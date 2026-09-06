@@ -225,4 +225,69 @@ let myLet = 10;
 // let str = "10";
 // let result = num + Number(str); // 15 (both values are converted to numbers) 
 //...................................................................
-                                           
+// C. Part3: Bonus (2 Grades):
+// How to deliver the bonus?
+
+                                           /**
+ * @param {integer} init
+ * @return { increment: Function, decrement: Function, reset: Function }
+ */
+var createCounter = function(init) {
+    let current = init;
+
+    return {
+        increment: function() {
+            current++;
+            return current;
+        },
+
+        decrement: function() {
+            current--;
+            return current;
+        },
+
+        reset: function() {
+            current = init;
+            return current;
+        }
+    };
+};createCounter(5)
+
+/**
+ * const counter = createCounter(5)
+ * counter.increment(); // 6
+ * counter.reset(); // 5
+ * counter.decrement(); // 4
+ */
+
+                                  
+                                //   Example 2
+
+var createCounter = function(init) {
+    let current = init;
+
+    return {
+        increment: function() {
+            current++;
+            return current;
+        },
+
+        decrement: function() {
+            current--;
+            return current;
+        },
+
+        reset: function() {
+            current = init;
+            return current;
+        }
+    };
+  
+};    createCounter(0);  
+// const counter = createCounter(0);
+// counter.increment(); // 1
+// counter.increment(); // 2
+// counter.decrement(); // 1
+// counter.reset(); // 0
+// counter.reset(); // 0                            
+//........................................................                               
