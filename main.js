@@ -172,3 +172,57 @@ function str() {
     console.log(a.split(" "))
 } str();
 //.......................................................
+
+                                  // مقالي
+
+ //1. What is the difference between forEach and for...of? When would you use each? (0.5 Grade)
+
+//  forEach is a method used to execute a function for each element in an array. It cannot be stopped using break or continue.
+
+// for...of is a loop used to iterate over iterable values such as arrays and strings. It allows using break and continue.
+
+// Use forEach when you simply want to perform an action on every element.
+
+// Use for...of when you need more control over the loop, such as using break or continue.   
+
+//.........................................................
+
+ //What is hoisting and what is the Temporal Dead Zone (TDZ)? Explain with examples. (0.5 Grade)
+
+// Hoisting is a JavaScript behavior where variable and 
+// function declarations are moved to the top of their scope before code execution.
+console.log(myVar); // undefined
+var myVar = 5;
+
+// Temporal Dead Zone (TDZ) is the time between the start of a block and the point where a variable is declared. 
+// Accessing a variable in the TDZ results in a ReferenceError.
+console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization
+let myLet = 10;
+
+//.................................................................
+// 3. What are the main differences between == and ===? (0.5 Grade)
+//  equel  == checks for equality of values not data tupes,
+//  strict  === checks for equality of both values and data types.
+
+// //.................................................................
+// 4. Explain how try-catch works and why it is important in async operations. (0.5 Grade)
+
+// try-catch is a mechanism for handling exceptions in JavaScript. The code inside the try block is executed,
+//  and if an error occurs, control is transferred to the catch block where the error can be handled gracefully. This is important in async operations to prevent unhandled promise rejections and to provide a way to manage errors without crashing the application.
+//try {
+//  // Code that may throw an error
+//} catch (error) {console.error('An error occurred:', error);}
+ //.................................................................
+//5. What’s the difference between type conversion and coercion? Provide examples of each. (0.5 Grade)
+//coercion is the automatic conversion of values from one type to another by JavaScript,
+// let num = 5;
+// let str = "10";
+// let result = num + str; // "510" (number is coerced to string) 
+
+// while conversion is the explicit conversion of values using functions or methods.
+//Example of coercion:
+// let num = 5;
+// let str = "10";
+// let result = num + Number(str); // 15 (both values are converted to numbers) 
+//...................................................................
+                                           
