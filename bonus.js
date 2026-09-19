@@ -77,14 +77,11 @@ function resolves(a) {
 // 9. Write a function that joins two paths.(0.5 Grade)
 // • Input Example: /folder1, folder2/file.txt
 // • Output Example: /folder1/folder2/file.txt
-
 function jio(a, b) {
-    const rslt = path.join(a) + path.join(b)
-    console.log(rslt)
-    return
-} jio("\\folder1", "\\folder2\\file.txt")
+    console.log(path.join(a, b))
+}
 
-
+jio("/folder1", "folder2/file.txt")
 // 10. Write a function that deletes a file asynchronously.(0.5 Grade)
 // • Input Example: /path/to/file.txt
 // • Output Example: The file.txt is deleted
@@ -93,7 +90,7 @@ const { error } = require("console");
 const { errorMonitor } = require("events");
 function hjt(delt) {
     fs.unlink(delt, (err) => {
-        // if (err);
+         if (err);
 
         console.error("The file.txt is deleted");
     });
@@ -134,11 +131,11 @@ vent.emit("start", "Ahmed");
 // 14. Read a file synchronously and log its contents.(0.5 Grade)
 // • Input Example: "./notes.txt"
 // • Output Example: the file content => “This is a note.”
-fs.writeFile("./bonus.js/notes.txt", "This is a note.", () => {
+fs.writeFileSync("./bonus.js/notes.txt", "This is a note.", () => {
     // if (error)
 })
 
-fs.readFile("notes.txt", "utf8", (err, data) => {
+fs.readFileSync("notes.txt", "utf8", (err, data) => {
     if (err) throw err;
 
     console.log(data);
@@ -209,10 +206,18 @@ readStream.pipe(writeStream);
 
 // 20. Create a pipeline that reads a file, compresses it, and writes it to another file. (0.5 Grade)
 // • Input Example: "./data.txt",,  "./data.txt"
-const reaStream = fs.createReadStream("./data.txt.gz", "utf8");
-const writeStram = fs.createWriteStream("./data.txt");
-reaStream.pipe(writeStram);
+const zlib = require("node:zlib");
+const { pipeline } = require("node:stream");
 
+pipeline(
+    fs.createReadStream("./data.txt"),
+    zlib.createGzip(),
+    fs.createWriteStream("./data.txt.gz"),
+    (err) => {
+        if (err) console.log(err.message);
+        else console.log("File compressed");
+    }
+);
 
 
 
