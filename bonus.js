@@ -221,5 +221,185 @@ pipeline(
 
 
 
+//...........................................................................
+// Part2: Simple CRUD Operations Using HTTP (5 Grades)
+
+// 1)Create an API that adds a new user to your users stored in a JSON file (1 Grade)
+// (ensure that the email of the new user doesn’t exist before)
+// o URL: POST /user
 
 
+const http = require("node:http");
+const { isRegExp } = require("node:util/types");
+
+const users = [
+    {
+        id: 1,
+        name: "Ziad",
+        age: 27,
+        email: "ziad@gmail.com"
+    }
+];
+
+const users2 = [
+    {
+        id: 2,
+        name: "Ahmed",
+        age: 30,
+        email: "ahmed@gmail.com"
+    }
+];
+
+const server = http.createServer((req, res) => {
+
+    if (req.url === "/" && req.method === "GET") {
+
+        res.writeHead(200, {
+            "Content-Type": "application/json"
+        });
+
+        res.write(JSON.stringify(users[0].email));
+  
+        res.end(JSON.stringify(users2) == users.email)
+         console.log({ "message": " email already exist"})
+    
+    }
+});
+
+server.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
+
+
+// 2)Create an API that updates an existing user's name, age, or email by their ID. The user ID should be retrieved
+// from the URL (1 Grade)
+// Note: Remember to update the corresponding values in the JSON file
+// o URL: PATCH /user/id
+
+const http = require("node:http");
+
+let users = [
+    { id: 1, name: "Ziad", age: 27 }
+];
+
+const server = http.createServer((req, res) => {
+
+    if (req.method === "PATCH" && req.url === "/user/1") {
+
+        if (users[0].age === 27) {
+
+            res.end(JSON.stringify({
+                message: "user updated successfully"
+            }));
+
+        } else {
+
+    res.end(JSON.stringify({
+        message: "age is required"
+    }))
+        }
+    }
+
+});
+
+server.listen(3000, () => {
+    console.log("Server running");
+});
+
+// 3)Create an API that deletes a User by ID. The user id should be retrieved from the URL (1 Grade)
+// Note: Remember to delete the user from the file
+// o URL: DELETE /user/id
+
+const http = require("node:http");
+
+let users = [
+    { id: 1, name: "Ziad", age: 27 },
+    { id: 2, name: "Ahmed", age: 30 }
+];
+
+const server = http.createServer((req, res) => {
+
+    if (req.method === "DELETE" && req.url === "/user/1") {
+
+        if (users[0]) {
+
+            users.splice(0, 1);
+
+            res.end(JSON.stringify({
+                message: "user deleted successfully"
+            }));
+
+        } else {
+
+            res.end(JSON.stringify({
+                message: "user not found"
+            }));
+
+        }
+    }
+
+});
+
+server.listen(3000);
+
+// 4)Create an API that gets all users from the JSON file. (1 Grade)
+// o URL: GET /user
+
+const http = require("node:http");
+
+let users = [
+    { id: 1, name: "Ziad", age: 27 },
+    { id: 2, name: "Ahmed", age: 30 }
+];
+
+const server = http.createServer((req, res) => {
+
+    if (req.method === "GET" && req.url === "/user") {
+
+        res.end(JSON.stringify(users));
+
+    }
+
+});
+
+server.listen(3000, () => {
+    console.log("Server running");
+});
+
+//
+// 5)Create an API that gets User by ID. (1 Grade)
+// o URL: GET /user/:id
+const http = require("node:http");
+
+let users = [
+    { id: 1, name: "Ziad", age: 27 },
+    { id: 2, name: "Ahmed", age: 30 }
+];
+
+const server = http.createServer((req, res) => {
+
+    if (req.method === "GET" && req.url.startsWith("/user/")) {
+
+        const id = Number(req.url.split("/")[2]);
+
+        const user = users.find(user => user.id === id);
+
+        if (user) {
+            res.end(JSON.stringify(user));
+        }  else {
+    res.end(JSON.stringify({
+        message: "user not found"
+    }));
+}
+
+    }
+
+});
+
+server.listen(3000, () => {
+    console.log("Server running");
+});
+
+
+
+// ..................................................................................
