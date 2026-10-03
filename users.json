@@ -1,0 +1,17 @@
+[
+{
+  "message": "User updated successfully",
+  
+    "id": 1,
+    "name": "Ziad Ali",
+    "age": 21,
+    "email": "ziad@gmail.com"
+  },
+  {
+    "id": 2,
+    "name": "Ahmed",
+    "age": 25,
+    "email": "ahmed@gmail.com"
+  }
+]
+
