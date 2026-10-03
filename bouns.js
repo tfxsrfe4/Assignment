@@ -10,7 +10,8 @@
 // Thread Pool: Handles some heavy async operations.Default = 4 threads.
 // Change it with UV_THREADPOOL_SIZE.
 //      Blocking / Non - Blocking: Blocking → waits and stops execution.
-//   Non - blocking → continues execution while waiting
+//   Non - blocking → means Node.js starts the operation and continues executing other code without waiting.
+
 
 //............................................................................................
  
